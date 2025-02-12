@@ -38,15 +38,27 @@ cmake -DYAML_BUILD_SHARED_LIBS=on .. && make
 sudo make install
 sudo ldconfig
 ```
+- imu_tools
 
+```
+cd /src
+git clone https://github.com/ccny-ros-pkg/imu_tools.git
+```
 
+- bugfix
+
+```
+cd /src/rl_deploy/rl_msgs
+mkdir srv
+```
 
 #### Run
 
 ```
-mon launch diablo load_gazebo.launch
-mon launch diablo load_controllers.launch
-mon launch diablo load_rl_interface.launch
+source devel/setup.bash
+roslaunch diablo load_gazebo.launch
+roslaunch diablo load_controllers.launch
+roslaunch diablo load_rl_interface.launch
 ```
 
 #### Reference code
