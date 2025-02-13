@@ -31,14 +31,31 @@ echo 'export Torch_DIR=/path/to/your/torchlib' >> ~/.bashrc
 
 - yaml-cpp
 
+方法1：
+```
+sudo apt install liblcm-dev libyaml-cpp-dev
+```
+方法2：
+
+yaml-cpp:
 ```python
+cd src
 git clone https://github.com/jbeder/yaml-cpp.git
 cd yaml-cpp && mkdir build && cd build
 cmake -DYAML_BUILD_SHARED_LIBS=on .. && make
 sudo make install
 sudo ldconfig
 ```
-- imu_tools
+lcm:
+```
+cd src
+git clone https://github.com/lcm-proj/lcm.git
+cd lcm && mkdir build && cd build
+cmake .. && make
+sudo make install
+sudo ldconfig
+```
+- imu_tools(如果有报这方面的错误)
 
 ```
 cd /src
@@ -48,7 +65,7 @@ git clone https://github.com/ccny-ros-pkg/imu_tools.git
 - bugfix
 
 ```
-cd /src/rl_deploy/rl_msgs
+cd src/rl_deploy/rl_msgs
 mkdir srv
 ```
 
@@ -73,3 +90,8 @@ https://github.com/fan-ziqi/rl_sar
 https://github.com/qiayuanl/legged_control
 https://github.com/rm-controls/rm_control
 ```
+
+#### 部署tips
+
+1. 通过导入.pt文件来实现强化策略的切换，导入后改动config.yaml文件中的model_name即可
+2. diablo_hw 文件夹中的 hw 表明该模块专注于 硬件接口和控制，在整个工程中扮演着连接软件系统与实际硬件设备的桥梁角色

@@ -11,7 +11,7 @@ model = torch::jit::load(model_path);
 actions = this->model.forward({clamped_obs}).toTensor();
 ```
 
-同时通过从`rosparam`获取`.yaml`文件中的参数（issacgym中训练时用到的各种scales等）。
+同时通过从`rosparam`获取`.yaml`文件中的参数（isaacgym中训练时用到的各种scales等）。
 
 不断的进行从controller中获取训练时obs所需要的信息（电机角度，速度和imu数据），并通过前向传播得到action，经过处理后通过topic发送出来。
 

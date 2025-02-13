@@ -68,7 +68,7 @@ torch::Tensor rl_sdk::ComputeObservation()
     {
       if (observation == "dof_pos")
       {
-//      Let wheel pos to zero
+        //      Let wheel pos to zero
         obs.dof_pos[0][2] = 0.;
         obs.dof_pos[0][5] = 0.;
         obs_list.push_back((obs.dof_pos - params.default_dof_pos) * params.dof_pos_scale);
@@ -132,7 +132,8 @@ torch::Tensor rl_sdk::ComputeCommand(torch::Tensor actions)
   if (params.use_vmc)
   {
     // TODO: should change the order to l-theta
-    torch::Tensor scaled_action = torch::zeros({ 1, 6 });;
+    torch::Tensor scaled_action = torch::zeros({ 1, 6 });
+    ;
 
     scaled_action[0][0] = actions[0][0] * params.action_scale_theta;
     scaled_action[0][1] = actions[0][1] * params.action_scale_l;
@@ -318,7 +319,7 @@ void rl_sdk::ReadYaml(const std::string config_path)
     params.action_scale_vel = config["action_scale_vel"].as<double>();
   }
 
-//  TODO： read from yaml
+  //  TODO： read from yaml
   params.commands_scale = torch::tensor({ params.lin_vel_scale, params.ang_vel_scale, 5.0 });
   params.torque_limits =
       torch::tensor(ReadVectorFromYaml<double>(config["torque_limits"], params.framework, rows, cols)).view({ 1, -1 });
@@ -352,5 +353,5 @@ void rl_sdk::SetObservation()
   auto dtheta_tensor = torch::tensor(robot_state.vmc.dtheta).narrow(0, 0, 2).unsqueeze(0);
   auto l_tensor = torch::tensor(robot_state.vmc.l).narrow(0, 0, 2).unsqueeze(0);
   auto dl_tensor = torch::tensor(robot_state.vmc.dl).narrow(0, 0, 2).unsqueeze(0);
-  obs.vmc = torch::cat({theta_tensor, dtheta_tensor, l_tensor, dl_tensor}, 0).view({1, -1});
+  obs.vmc = torch::cat({ theta_tensor, dtheta_tensor, l_tensor, dl_tensor }, 0).view({ 1, -1 });
 }
