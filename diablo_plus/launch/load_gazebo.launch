@@ -1,7 +1,7 @@
 <launch>
-    <param name="robot_description" command="$(cat $(find diablo_plus)/urdf/diablo_plus.urdf)" />
+    <param name="robot_description" textfile="$(find diablo_plus2)/urdf/diablo_plus.urdf" />
 
-    <rosparam file="$(find diablo_plus)/config/gazebo.yaml" command="load"/>
+    <rosparam file="$(find diablo_plus2)/config/gazebo.yaml" command="load"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="false"/>
