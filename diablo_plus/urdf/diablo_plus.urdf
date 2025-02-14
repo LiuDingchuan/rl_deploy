@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="diablo_plus2">
+  name="diablo_plus">
   <link
     name="base_link">
     <inertial>
@@ -48,7 +48,7 @@
     name="left_hip">
     <inertial>
       <origin
-        xyz="-0.033875 0.083817 -0.025481"
+        xyz="-0.034066 0.083955 -0.025798"
         rpy="0 0 0" />
       <mass
         value="2.0" />
@@ -213,6 +213,8 @@
     <axis
       xyz="0 1 0" />
     <limit
+      lower="0"
+      upper="0"
       effort="20"
       velocity="30" />
   </joint>
@@ -220,7 +222,7 @@
     name="right_hip">
     <inertial>
       <origin
-        xyz="-0.03368 -0.083816 -0.025625"
+        xyz="-0.034105 -0.083955 -0.025747"
         rpy="0 0 0" />
       <mass
         value="2.0" />
@@ -385,6 +387,8 @@
     <axis
       xyz="0 1 0" />
     <limit
+      lower="0"
+      upper="0"
       effort="20"
       velocity="30" />
   </joint>

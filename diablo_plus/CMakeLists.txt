@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 
-project(diablo_plus2)
+project(diablo_plus)
 
 find_package(catkin REQUIRED)
 
